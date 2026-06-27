@@ -1,0 +1,26 @@
+{
+  "name": "LinhaMap — Trafegabilidade Rural",
+  "short_name": "LinhaMap",
+  "description": "Avise problemas nas estradas vicinais, mesmo sem internet. Suas denúncias são enviadas sozinhas quando a conexão volta.",
+  "start_url": "/denuncia",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#26734f",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

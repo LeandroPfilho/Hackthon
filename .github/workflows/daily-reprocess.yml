@@ -1,0 +1,33 @@
+name: Reprocessamento diário de scores
+
+# Recalcula o Índice de Trafegabilidade de todos os trechos uma vez por dia.
+# Aciona o endpoint do worker da aplicação publicada (Seção 6.8).
+#
+# Configure os Secrets do repositório (Settings > Secrets and variables > Actions):
+#   APP_URL      -> URL pública do MVP (ex.: https://linhamap.vercel.app)
+#   CRON_SECRET  -> mesmo valor definido na variável de ambiente da aplicação
+#
+# Obs.: o deploy na Vercel também já agenda este reprocessamento via Vercel Cron
+# (ver vercel.json). Este workflow é uma alternativa/garantia independente.
+
+on:
+  schedule:
+    - cron: "0 8 * * *" # 08:00 UTC (~04:00 em Ariquemes/RO, UTC-4)
+  workflow_dispatch: {} # permite acionar manualmente pela aba Actions
+
+jobs:
+  reprocess:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Acionar worker de reprocessamento
+        run: |
+          if [ -z "${{ secrets.APP_URL }}" ]; then
+            echo "Secret APP_URL não configurado. Pulando."
+            exit 0
+          fi
+          echo "Acionando reprocessamento diário em ${{ secrets.APP_URL }} ..."
+          curl -fsS -X POST "${{ secrets.APP_URL }}/api/worker/reprocess-daily" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            -H "Content-Type: application/json"
+          echo ""
+          echo "Reprocessamento solicitado com sucesso."

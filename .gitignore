@@ -1,0 +1,66 @@
+# ============================================================
+# LinhaMap — .gitignore (monorepo: frontend Next.js + backend FastAPI)
+# ============================================================
+
+# ----- Segredos / ambiente -----
+.env
+.env.local
+.env.*.local
+*.local
+backend/.env
+frontend/.env.local
+
+# ----- PWA / Serwist (gerados no build — Vercel regera) -----
+public/sw.js
+public/sw.js.map
+public/swe-worker-*.js
+
+# ----- Node / Next.js (frontend) -----
+node_modules/
+.next/
+out/
+build/
+dist/
+.vercel/
+*.tsbuildinfo
+next-env.d.ts
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# ----- Python / FastAPI (backend) -----
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+ENV/
+
+# ----- Editores / SO -----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+
+# ----- Ferramentas locais (não versionar) -----
+.firecrawl/
+
+# ----- Uploads / artefatos temporários -----
+backend/uploads/
+*.log
+coverage/
+.coverage
+htmlcov/
+./Docs - MD
+
+.vercel

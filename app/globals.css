@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * LinhaMap — design tokens.
+ * Tema limpo e corporativo: base neutra fria, verde institucional (agro +
+ * confiança) como primária, e uma escala de risco própria e legível.
+ */
+@layer base {
+  :root {
+    --background: 160 24% 99%;
+    --foreground: 215 28% 17%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 28% 17%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 28% 17%;
+
+    /* Verde institucional (forest) */
+    --primary: 152 47% 30%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 152 16% 95%;
+    --secondary-foreground: 215 25% 22%;
+
+    --muted: 150 14% 96%;
+    --muted-foreground: 215 14% 45%;
+
+    --accent: 152 18% 93%;
+    --accent-foreground: 215 25% 22%;
+
+    --destructive: 0 72% 46%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 150 12% 89%;
+    --input: 150 12% 89%;
+    --ring: 152 47% 30%;
+
+    /* Escala de risco */
+    --risk-baixo: 142 71% 38%;
+    --risk-medio: 45 93% 47%;
+    --risk-alto: 25 95% 53%;
+    --risk-critico: 0 74% 47%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 215 32% 10%;
+    --foreground: 150 14% 96%;
+
+    --card: 215 30% 13%;
+    --card-foreground: 150 14% 96%;
+
+    --popover: 215 30% 13%;
+    --popover-foreground: 150 14% 96%;
+
+    --primary: 152 52% 45%;
+    --primary-foreground: 215 32% 10%;
+
+    --secondary: 215 25% 18%;
+    --secondary-foreground: 150 14% 96%;
+
+    --muted: 215 25% 18%;
+    --muted-foreground: 215 14% 65%;
+
+    --accent: 215 25% 20%;
+    --accent-foreground: 150 14% 96%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 25% 22%;
+    --input: 215 25% 22%;
+    --ring: 152 52% 45%;
+
+    --risk-baixo: 142 65% 45%;
+    --risk-medio: 45 90% 55%;
+    --risk-alto: 25 90% 58%;
+    --risk-critico: 0 70% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Impressão / PDF — documento limpo para ata/ofício (usado em /relatorios). */
+@media print {
+  /* Preserva cores de selos, barras e badges no PDF. */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @page {
+    margin: 1.5cm;
+  }
+  body {
+    background: #fff;
+  }
+}
